@@ -1,0 +1,31 @@
+//프로젝트에 사용할 플러그인인 스프링 부트 플러그인과 의존성 관리 플러그인을 추가
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+//프로젝트 설정시 기본값인 그룹 이름과 버전과 자바 소스를 컴파일할 때 사용할 자바 버전 설정
+group 'me.jaeheon'
+version '1.0'
+sourceCompatibility = '17'
+
+//의존성을 받을 저장소 지정
+repositories {
+    mavenCentral()
+}
+
+//필요한 기능의 의존성을 입력
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+}
+
+test {
+    useJUnitPlatform()
+}
