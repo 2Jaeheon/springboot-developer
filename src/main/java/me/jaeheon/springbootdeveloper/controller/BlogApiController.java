@@ -71,9 +71,7 @@ public class BlogApiController {
     public ResponseEntity<Article> updateArticle(@PathVariable long id,
         @RequestBody UpdateArticleRequest request) {
         Article updatedArticle = blogService.update(id, request);
-
-        System.out.println(updatedArticle.getTitle() + "  and  " + updatedArticle.getContent());
-
+        
         return ResponseEntity.ok()
             .body(updatedArticle);
     }
