@@ -10,9 +10,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity // 엔티티로 지정
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity // 엔티티로 지정 -> DB 테이블과 매핑됨.
+@Getter // Getter를 자동으로 생성
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // 기본 생성자를 자동으로 생성
+// 기본 생성자의 접근제어자를 AccessLevel로 설정함.
 public class Article {
 
     @Id // id 필드를 기본키로 설정
@@ -21,10 +22,12 @@ public class Article {
     private Long id;
 
     // title이라는 not null 컬럼과 매핑
-    @Column(name = "title", updatable = false)
+    // updatable = false로 되어있어서 수정 안 됐음
+    // 수정하려면 true가 되어야함. 기본값 == true
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "content", updatable = false)
+    @Column(name = "content")
     private String content;
 
     // 빌더 패턴으로 객체 생성 (Lombok)
@@ -33,6 +36,11 @@ public class Article {
 
     @Builder
     public Article(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
