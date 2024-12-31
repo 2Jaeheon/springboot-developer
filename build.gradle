@@ -1,31 +1,29 @@
-//프로젝트에 사용할 플러그인인 스프링 부트 플러그인과 의존성 관리 플러그인을 추가
+// This is the build file for the project. It is written in Groovy, a JVM-based language.
+// This file is used to define the project's configuration, dependencies, and tasks.
+// These Plugins are used to define the project as a Java project and a Spring Boot project.
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
-//프로젝트 설정시 기본값인 그룹 이름과 버전과 자바 소스를 컴파일할 때 사용할 자바 버전 설정
-group 'me.jaeheon'
-version '1.0'
+group = 'org.jaeheon'
+version = '1.0'
+// This is the main class of the project. It is the entry point of the application.
 sourceCompatibility = '17'
 
-//의존성을 받을 저장소 지정
+// This is the repositories block. It is used to define the repositories where the dependencies are located.
 repositories {
     mavenCentral()
 }
 
-//필요한 기능의 의존성을 입력
+// This is the dependency block. It is used to define the dependencies of the project.
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'com.h2database:h2'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
 }
 
+// This is the test block. It is used to define the test framework used in the project.
 test {
     useJUnitPlatform()
 }
