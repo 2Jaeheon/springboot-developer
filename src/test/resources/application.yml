@@ -1,0 +1,6 @@
+spring:
+  sql:
+    init:
+      #     this option is used to enable or disable the initialization of the database
+      #     if you want to enable the initialization of the database, you can set it to always
+      mode: never
