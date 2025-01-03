@@ -1,5 +1,6 @@
 package org.jaeheon.springbootdeveloper.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.jaeheon.springbootdeveloper.domain.Article;
 import org.jaeheon.springbootdeveloper.dto.AddArticleRequest;
@@ -18,5 +19,9 @@ public class BlogService {
 
     public Article save(AddArticleRequest request) {
         return blogRepository.save(request.toEntity());
+    }
+
+    public List<Article> findAll() {
+        return blogRepository.findAll();
     }
 }
