@@ -2,13 +2,18 @@ package org.jaeheon.springbootdeveloper.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Getter
@@ -18,6 +23,9 @@ import lombok.NoArgsConstructor;
 // in this case, the access level is set to protected
 // this means that the constructor is only accessible to classes in the same package
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+// @EntityListeners annotation is used to specify the callback listener classes for an entity
+// in this case, the AuditingEntityListener class is specified as the callback listener class
+@EntityListeners(AuditingEntityListener.class)
 public class Article {
 
     @Id
@@ -30,6 +38,16 @@ public class Article {
 
     @Column(name = "content", nullable = false)
     private String content;
+
+    // created date is automatically set when the entity is created
+    @CreatedDate
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    // modified date is automatically updated when the entity is updated
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     // @Builder annotation is usable only when lombok plugin is installed
     // this annotation is used to generate a builder class for the annotated class
