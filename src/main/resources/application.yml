@@ -14,3 +14,7 @@ spring:
   h2:
     console:
       enabled: true
+
+jwt:
+  issuer: ajufresh@gamil.com
+  secret_key: study-springboot
