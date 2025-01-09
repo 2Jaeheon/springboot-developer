@@ -9,15 +9,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. 저장소 클론
       - uses: actions/checkout@v3
 
+      # 2. Java 환경 설정
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      # 3. 실행 권한 부여
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      # 4. application.yml 동적 생성
+      - name: Generate application.yml
+        run: |
+          echo "spring:" > src/main/resources/application.yml
+          echo "  jpa:" >> src/main/resources/application.yml
+          echo "    show-sql: true" >> src/main/resources/application.yml
+          echo "    properties:" >> src/main/resources/application.yml
+          echo "      hibernate:" >> src/main/resources/application.yml
+          echo "        format_sql: true" >> src/main/resources/application.yml
+          echo "    defer-datasource-initialization: true" >> src/main/resources/application.yml
+          echo "  h2:" >> src/main/resources/application.yml
+          echo "    console:" >> src/main/resources/application.yml
+          echo "      enabled: true" >> src/main/resources/application.yml
+          echo "  security:" >> src/main/resources/application.yml
+          echo "    oauth2:" >> src/main/resources/application.yml
+          echo "      client:" >> src/main/resources/application.yml
+          echo "        registration:" >> src/main/resources/application.yml
+          echo "          google:" >> src/main/resources/application.yml
+          echo "            client-id: '${{ secrets.GOOGLE_CLIENT_ID }}'" >> src/main/resources/application.yml
+          echo "            client-secret: '${{ secrets.GOOGLE_CLIENT_SECRET }}'" >> src/main/resources/application.yml
+          echo "            scope:" >> src/main/resources/application.yml
+          echo "              - email" >> src/main/resources/application.yml
+          echo "              - profile" >> src/main/resources/application.yml
+          echo "jwt:" >> src/main/resources/application.yml
+          echo "  issuer: '${{ secrets.JWT_ISSUER }}'" >> src/main/resources/application.yml
+          echo "  secret_key: '${{ secrets.JWT_SECRET_KEY }}'" >> src/main/resources/application.yml
+
+      # 5. Gradle 빌드
       - name: Build with Gradle
         run: ./gradlew clean build
