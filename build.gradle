@@ -38,6 +38,8 @@ dependencies {
 
     // OAuth2
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    implementation 'com.mysql:mysql-connector-j'
 }
 
 // This is the test block. It is used to define the test framework used in the project.
