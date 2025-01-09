@@ -42,6 +42,9 @@ dependencies {
     implementation 'com.mysql:mysql-connector-j'
 }
 
+jar {
+    enabled = false
+}
 // This is the test block. It is used to define the test framework used in the project.
 test {
     useJUnitPlatform()
