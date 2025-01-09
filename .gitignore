@@ -203,3 +203,6 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/macos,gradle,java,intellij
 
 .idea
+
+application.yml
+src/main/resources/application.yml

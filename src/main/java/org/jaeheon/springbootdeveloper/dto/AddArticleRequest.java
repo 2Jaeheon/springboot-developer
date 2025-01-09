@@ -15,11 +15,12 @@ public class AddArticleRequest {
 
     // toEntity() method is used to convert the AddArticleRequest object to an Article object
     // AddArticleRequest -> Article
-    public Article toEntity() {
+    public Article toEntity(String author) {
         // return new instance of Article with the title and content
         return Article.builder()
             .title(title)
             .content(content)
+            .author(author)
             .build();
     }
 }

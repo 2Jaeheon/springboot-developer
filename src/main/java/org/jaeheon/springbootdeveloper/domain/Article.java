@@ -39,6 +39,10 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name = "author", nullable = false)
+    private String author;
+
+
     // created date is automatically set when the entity is created
     @CreatedDate
     @Column(name = "created_at")
@@ -53,7 +57,8 @@ public class Article {
     // this annotation is used to generate a builder class for the annotated class
     // this is useful when you want to create an instance of a class with many fields
     @Builder
-    public Article(String title, String content) {
+    public Article(String author, String title, String content) {
+        this.author = author;
         this.title = title;
         this.content = content;
     }

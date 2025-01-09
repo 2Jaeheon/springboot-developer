@@ -1,3 +1,4 @@
+/*
 package org.jaeheon.springbootdeveloper.config;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
@@ -36,13 +37,15 @@ public class WebSecurityConfig {
             .requestMatchers(new AntPathRequestMatcher("/static/**"));
     }
 
-    /*
+    */
+/*
     1.	/login, /signup.html, /user 경로는 누구나 접근 가능.
 	2.	다른 모든 경로는 로그인해야 접근 가능.
 	3.	로그인 시 /login 페이지를 사용하고, 성공하면 /articles로 이동.
 	4.	로그아웃 시 /login으로 이동하며, 세션 정보를 삭제.
 	5.	CSRF 보호를 비활성화하여 간단한 API 환경을 지원.
-	*/
+	*//*
+
 
     // Configuring web-based security for specific HTTP requests
     // The filterChain() method is used to configure the security filter chain.
@@ -86,13 +89,15 @@ public class WebSecurityConfig {
     }
 
 
-    /*
+    */
+/*
     1.	사용자가 로그인 시, ID와 비밀번호를 입력합니다.
 	2.	AuthenticationManager는 입력받은 정보를 DaoAuthenticationProvider로 전달합니다.
 	3.	DaoAuthenticationProvider는 UserDetailService를 사용해 데이터베이스에서 사용자의 정보를 조회합니다.
 	4.	입력받은 비밀번호를 암호화(BCryptPasswordEncoder)하여, 저장된 비밀번호와 비교합니다.
 	5.	정보가 일치하면 인증 성공, 그렇지 않으면 인증 실패를 반환합니다.
-	*/
+	*//*
+
 
     @Bean
     // AuthenticationManager checks the authentication information entered by the user and decides whether to authenticate the user based on this.
@@ -118,3 +123,4 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+*/

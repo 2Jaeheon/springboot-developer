@@ -35,6 +35,9 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.projectlombok:lombok'
+
+    // OAuth2
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 // This is the test block. It is used to define the test framework used in the project.
